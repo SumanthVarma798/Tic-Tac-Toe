@@ -6,7 +6,6 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <script src="https://d3js.org/d3.v6.js"></script>
     <App />
   </React.StrictMode>,
   document.getElementById("root")

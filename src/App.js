@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Board from "./Board";
-import InfoBlock from "./InfoBlock";
-import WinnerBlock from "./WinnerBlock";
+import Board from "./components/Board";
+import InfoBlock from "./components/InfoBlock";
+import WinnerBlock from "./components/WinnerBlock";
 import "./App.css";
 
 class App extends Component {
