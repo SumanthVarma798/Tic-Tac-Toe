@@ -23,8 +23,8 @@ class App extends Component {
     });
   };
 
-  winCheck() {
-    const { board, players } = this.state;
+  winCheck(board) {
+    const { players } = this.state;
     let newBoard = ["", "", "", "", "", "", "", "", ""];
     for (let i = 0; i < 9; i += 3) {
       if (
@@ -38,14 +38,14 @@ class App extends Component {
           newBoard[i] = "X";
           newBoard[i + 1] = "X";
           newBoard[i + 2] = "X";
-          this.setState({ board: newBoard, winner: players[0].name });
-          return;
+          this.setState({ winner: players[0].name });
+          return newBoard;
         }
         newBoard[i] = "O";
         newBoard[i + 1] = "O";
         newBoard[i + 2] = "O";
-        this.setState({ board: newBoard, winner: players[1].name });
-        return;
+        this.setState({ winner: players[1].name });
+        return newBoard;
       }
     }
     for (let i = 0; i < 3; i++) {
@@ -60,14 +60,14 @@ class App extends Component {
           newBoard[i] = "X";
           newBoard[i + 3] = "X";
           newBoard[i + 6] = "X";
-          this.setState({ board: newBoard, winner: players[0].name });
-          return;
+          this.setState({ winner: players[0].name });
+          return newBoard;
         }
         newBoard[i] = "O";
         newBoard[i + 3] = "O";
         newBoard[i + 6] = "O";
-        this.setState({ board: newBoard, winner: players[1].name });
-        return;
+        this.setState({ winner: players[1].name });
+        return newBoard;
       }
     }
     if (
@@ -81,14 +81,14 @@ class App extends Component {
         newBoard[0] = "X";
         newBoard[4] = "X";
         newBoard[8] = "X";
-        this.setState({ board: newBoard, winner: players[0].name });
-        return;
+        this.setState({ winner: players[0].name });
+        return newBoard;
       }
       newBoard[0] = "O";
       newBoard[4] = "O";
       newBoard[8] = "O";
-      this.setState({ board: newBoard, winner: players[1].name });
-      return;
+      this.setState({ winner: players[1].name });
+      return newBoard;
     }
     if (
       board[2] === board[4] &&
@@ -101,27 +101,35 @@ class App extends Component {
         newBoard[2] = "X";
         newBoard[4] = "X";
         newBoard[6] = "X";
-        this.setState({ board: newBoard, winner: players[0].name });
-        return;
+        this.setState({ winner: players[0].name });
+        return newBoard;
       }
       newBoard[2] = "O";
       newBoard[4] = "O";
       newBoard[6] = "O";
-      this.setState({ board: newBoard, winner: players[1].name });
-      return;
+      this.setState({ winner: players[1].name });
+      return newBoard;
     }
+    return null;
   }
 
   cellClicked = (id) => {
     const { board, players, numMoves, winner } = this.state;
     if (board[id] === "" && winner === "") {
+      const newBoard = [...board];
+      const currentPlayer = players[numMoves % 2];
       const moves = numMoves + 1;
-      const currentPlayer = players[moves % 2];
-      let newBoard = { ...board };
       newBoard[id] = currentPlayer.symbol;
-      this.setState({ board: newBoard, numMoves: moves });
-      this.winCheck();
-      console.log(this.state.winner);
+      const winBoard = this.winCheck(newBoard);
+      winBoard !== null
+        ? this.setState({
+            board: winBoard,
+            numMoves: moves,
+          })
+        : this.setState({
+            board: newBoard,
+            numMoves: moves,
+          });
     }
   };
 
