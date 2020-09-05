@@ -24,8 +24,8 @@ h1 {
 
 .cells {
   display: grid;
-  grid-template-rows: 2in 2in 2in;
-  grid-template-columns: 2in 2in 2in;
+  grid-template-rows: 10vw 10vw 10vw;
+  grid-template-columns: 10vw 10vw 10vw;
   color: blue;
 }
 
@@ -34,7 +34,7 @@ h1 {
   flex-direction: row;
   margin-top: 5mm;
   height: auto;
-  width: 6in;
+  width: 30vw;
   justify-content: space-evenly;
 }
 
@@ -47,7 +47,7 @@ h1 {
 }
 
 .winner-info {
-  width: 3in;
+  width: 15vw;
   height: auto;
   text-align: center;
   padding: 0mm 3mm 0mm 3mm;
@@ -57,7 +57,7 @@ h1 {
 }
 
 .reset {
-  width: 2in;
+  width: 12vw;
   height: auto;
   background-color: white;
   color: black;
@@ -86,35 +86,36 @@ h1 {
   justify-content: space-evenly;
   margin-bottom: 5mm;
   height: auto;
-  width: 6in;
+  width: 30vw;
 }
 
 input {
   height: 1cm;
-  width: 2in;
+  width: 10vw;
   text-align: center;
   border: 1px solid gray;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
 }
 
-button {
-  height: 2in;
-  width: 2in;
+.cells button {
+  height: 10vw;
+  width: 10vw;
   border-radius: 10px;
   background-color: white;
   color: black;
 }
 
-button:hover {
+.cells button:hover {
   border: 5px solid gray;
 }
 
 h2 {
   font-family: cursive;
+  font-size: 1.3vw;
 }
 
 h3 {
   font-family: cursive;
-  font-size: 1.5cm;
+  font-size: 1.5vw;
 }
